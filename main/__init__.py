@@ -10,6 +10,11 @@ app.config["SQLALCHEMY_TRACK_MODIFICATION"]=True
 db.init_app(app)
 
 from main.Services.models import *
+from main.Services.views import services
+app.register_blueprint(services)
+
 from main.Client.models import *
+
 from main.Vendor.models import *
+
 from main.Plans.models import *
