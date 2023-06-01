@@ -59,6 +59,13 @@ def display_all_services():
             subscribed_service=i.subscribed_service
             plan=i.plan
             plan_amount=i.plan_amount
+            vendor=i.vendor
+            subscribed_on=i.subscribed_on
+            next_renewal_date=i.next_renewal_date
+            remind_on=i.remind_on
+            service_status=i.service_status
+            plan_details=i.plan_details
+            comments=i.comments
 
             temp={
                 "id":id,
@@ -66,7 +73,14 @@ def display_all_services():
                 "client_name":client_name,
                 "subscribed_service":subscribed_service,
                 "plan":plan,
-                "plan_amount":plan_amount
+                "plan_amount":plan_amount,
+                "vendor":vendor,
+                "subscribed_on":subscribed_on,
+                "next_renewal_date":next_renewal_date,
+                "remind_on":remind_on,
+                "service_status":service_status,
+                "plan_details":plan_details,
+                "comments":comments
             }
             all_data.append(temp)
         return jsonify({
@@ -155,10 +169,6 @@ def get_by_id(id):
                 "message":"id not found",
                 "status":False
             })
-        # return jsonify({
-        #     "id":data.id,
-        #     "plan":data.plan
-        # })
         demo = Services.to_json(data)
         return jsonify({
             "staus":True,"data":demo

@@ -14,7 +14,11 @@ from main.Services.views import services
 app.register_blueprint(services)
 
 from main.Client.models import *
+from main.Client.views import client
+app.register_blueprint(client)
 
 from main.Vendor.models import *
+from main.Vendor.views import vendor
+app.register_blueprint(vendor)
 
 from main.Plans.models import *
