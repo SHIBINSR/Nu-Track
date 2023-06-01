@@ -22,3 +22,5 @@ from main.Vendor.views import vendor
 app.register_blueprint(vendor)
 
 from main.Plans.models import *
+from main.Plans.views import plans
+app.register_blueprint(plans)

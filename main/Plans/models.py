@@ -9,3 +9,12 @@ class Plans(db.Model):
     
     def __repr__(self):
         return f"<userid:{self.id}>"
+    
+    def to_json(self):
+        return {
+            "id":self.id,
+            "domain":self.domain_name,
+            "website":self.website,
+            "hosting":self.hosting,
+            "software":self.software
+        }

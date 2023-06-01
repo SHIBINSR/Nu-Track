@@ -109,7 +109,7 @@ def edit_data(id):
         db.session.commit()
 
         return jsonify({
-            "message":"edited done",
+            "message":"changes saved",
             "status":True
         })
     except Exception as e:
