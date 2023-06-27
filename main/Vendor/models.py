@@ -1,4 +1,5 @@
 from main.extensions import db
+import json
 
 class Vendor(db.Model):
     id=db.Column(db.BigInteger(),primary_key=True)
@@ -10,9 +11,13 @@ class Vendor(db.Model):
     logo=db.Column(db.String(255),nullable=False)
     contact_person=db.Column(db.BigInteger(),nullable=False)
     designation=db.Column(db.String(100),nullable=False)
+    created_by = db.Column(db.Integer, nullable=True)
+    updated_by = db.Column(db.Integer, nullable=True)
+    created_at = db.Column(db.DateTime(timezone=True), server_default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime(timezone=True), server_default=db.func.now(), onupdate=db.func.now())
     
     def __repr__(self):
-        return f"<userid:{self.id}>"
+        return f"<Vendor:{self.id}>"
     
     def to_json(self):
         return{
@@ -22,9 +27,13 @@ class Vendor(db.Model):
             "website":self.website,
             "email":self.email,
             "phone":self.phone,
-            "logo":self.logo,
+            "logo":json.loads(self.logo),
             "contact_person":self.contact_person,
-            "designation":self.designation
+            "designation":self.designation,
+            "created_by":self.created_by,
+            "updated_by":self.updated_by,
+            "created_at":self.created_at,
+            "updated_at":self.updated_at
         }
         
         

@@ -23,13 +23,17 @@ def add_plans():
 
         return jsonify({
             "message":"data added successfully",
-            "status":True
-        })
+            "status":True,
+            "data":"",
+            "error":""
+        }),200
     except Exception as e:
         return jsonify({
-            "message":str(e),
-            "status":False
-        })
+            "message":"",
+            "status":False,
+            "data":"",
+            "error":str(e)
+        }),500
 
 @plans.route("/")
 def show_all_plans():
@@ -53,41 +57,57 @@ def show_all_plans():
             }
             all_data.append(temp)
         return jsonify({
+            "msg":"",
+            "status":True,
             "data":all_data,
-            "status":True
-        })
+            "error":""
+        }),200
     except Exception as e:
         return jsonify({
-            "message":str(e),
-            "status":False
-        })
+            "message":"",
+            "status":False,
+            "data":"",
+            "error":str(e)
+        }),500
 
 @plans.route("/edit/<int:id>",methods=["PUT"])
 def edit_plan(id):
-    data=request.get_json()
-    domain_name=data.get("domain_name")
-    website=data.get("website")
-    hosting=data.get("hosting")
-    software=data.get("software")
+    try:
+        data=request.get_json()
+        domain_name=data.get("domain_name")
+        website=data.get("website")
+        hosting=data.get("hosting")
+        software=data.get("software")
 
-    edit=Plans.query.get(id)
-    if edit is None:
+        edit=Plans.query.get(id)
+        if edit is None:
+            return jsonify({
+                "message":"data not found",
+                "status":False,
+                "data":"",
+                "error":""
+            }),404
+    
+        edit.domain_name=domain_name
+        edit.website=website
+        edit.hosting=hosting
+        edit.software=software
+        
+        db.session.commit()
+
         return jsonify({
-            "message":"data not found",
-            "status":False
-        })
-    
-    edit.domain_name=domain_name
-    edit.website=website
-    edit.hosting=hosting
-    edit.software=software
-    
-    db.session.commit()
-
-    return jsonify({
-        "message":"changes saved",
-        "status":True
-    })
+            "message":"changes saved",
+            "status":True,
+            "data":"",
+            "eror":""
+        }),201
+    except Exception as e:
+        return jsonify({
+            "msg":"",
+            "status":False,
+            "data":"",
+            "error":str(e)
+        }),500
 
 @plans.route("/delete/<int:id>",methods=["DELETE"])
 def delete_plans(id):
@@ -117,15 +137,21 @@ def show_by_id(id):
         if data is None:
             return jsonify({
                 "message":"data not found",
-                "status":False
-            })
+                "status":False,
+                "data":"",
+                "error":""
+            }),404
         demo=Plans.to_json(data)
         return jsonify({
+            "msg":"",
             "data":demo,
-            "status":True
-        })
+            "status":True,
+            "error":""
+        }),201
     except Exception as e:
         return jsonify({
-            "message":str(e),
-            "status":False
-        })
+            "message":"",
+            "status":False,
+            "data":"",
+            "error":str(e)
+        }),500

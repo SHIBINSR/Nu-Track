@@ -1,0 +1,579 @@
+{
+	"info": {
+		"_postman_id": "0631330d-859a-450c-90ef-a29ade0d17bd",
+		"name": "Nu Track",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25416142",
+		"_collection_link": "https://bold-spaceship-274244.postman.co/workspace/New-Team-Workspace~2139230b-ff95-4081-93cc-27db915141b1/collection/25416142-0631330d-859a-450c-90ef-a29ade0d17bd?action=share&creator=25416142&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "add services",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subscriber_type\":\"individual\",\n    \"client\":\"df\",\n    \"client_name\":\"dfrr\",\n    \"subscribed_service\":57,\n    \"plan\":\"fdfsd\",\n    \"plan_amount\":588,\n    \"vendor\":\"jhkjh\",\n    \"subscribed_on\":\"2022-01-23\",\n    \"next_renewal_date\":\"2022-04-25\",\n    \"remind_on\":\"2020-08-24\",\n    \"service_status\":5,\n    \"plan_details\":\"ffs\",\n    \"comments\":\"fgsgs\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/services/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"services",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/services?page=1&per_page=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"services"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update data",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subscriber_type\":\"individual\",\n    \"client\":\"df\",\n    \"client_name\":\"dfrr\",\n    \"subscribed_service\":57,\n    \"plan\":\"fdfsd\",\n    \"plan_amount\":20000,\n    \"vendor\":\"jhkjh\",\n    \"subscribed_on\":\"2022-01-23\",\n    \"next_renewal_date\":\"2022-04-25\",\n    \"remind_on\":\"2020-08-24\",\n    \"service_status\":586,\n    \"plan_details\":\"ffs\",\n    \"comments\":\"fgsgs\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/services/edit/9",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"services",
+								"edit",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete data",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/services/delete/9",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"services",
+								"delete",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get data by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/services/8",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"services",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "add clients",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company_name\":\"numota\",\n    \"address\":\"thoothoor\",\n    \"website\":\"numota.in\",\n    \"email\":\"numota123@.com\",\n    \"phone\":1234567895,\n    \"company_logo\":\"bjbkbjbjb\",\n    \"contact_person\":1234569877,\n    \"designation\":\"hello world\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/client/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"client",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all client data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/client?page=0&per_page=0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"client"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "per_page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit client",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"thoothoor\",\n            \"company_logo\": \"bjbkbjbjb\",\n            \"company_name\": \"numota\",\n            \"contact_person\": 1234569877,\n            \"designation\": \"hello world\",\n            \"email\": \"numota123@.com\",\n            \"id\": 1,\n            \"phone\": 55555555555,\n            \"website\": \"numota.in\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/client/edit/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"client",
+								"edit",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove client",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/client/delete/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"client",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get client data by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/client/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"client",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vendor",
+			"item": [
+				{
+					"name": "add vendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vendor_name\":\"shikii\",\n    \"address\":\"thoothoor\",\n    \"website\":\"numota.in\",\n    \"email\":\"numota123@.com\",\n    \"phone\":1234567895,\n    \"logo\":\"bjbkbjbjb\",\n    \"contact_person\":1234569877,\n    \"designation\":\"hello world\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/vendor/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"vendor",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all vendor data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/vendor?page=0&per_page=0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"vendor"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "per_page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vendor_name\":\"shiko\",\n    \"address\":\"thoothoor\",\n    \"website\":\"numota.in\",\n    \"email\":\"numota123@.com\",\n    \"phone\":1234567895,\n    \"logo\":\"bjbkbjbjb\",\n    \"contact_person\":1234569877,\n    \"designation\":\"hello world\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/vendor/edit/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"vendor",
+								"edit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete vendor data",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/vendor/delete/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"vendor",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/vendor/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"vendor",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plans",
+			"item": [
+				{
+					"name": "add plans",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"domain_name\":\"oooooooooooo\",\n    \"website\":\"fsfdf\",\n    \"hosting\":\"gfgsg\",\n    \"software\":\"sfgdt\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/plans/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"plans",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show all plans data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/plans?page=0&per_page=0",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"plans"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "per_page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editing plans",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"domain_name\":\"oooooooooooo\",\n    \"website\":\"fsfdf\",\n    \"hosting\":\"gfgsg\",\n    \"software\":\"sfgdt\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/plans/edit/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"plans",
+								"edit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete plans",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/plans/delete/3",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"plans",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/plans/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"plans",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

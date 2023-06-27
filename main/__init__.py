@@ -6,6 +6,8 @@ app.config.from_prefixed_env()
 
 app.config["SQLALCHEMY_DATABASE_URI"]="mysql+pymysql://root:password@localhost:3306/nutrack"
 app.config["SQLALCHEMY_TRACK_MODIFICATION"]=True
+app.config['UPLOAD_FOLDER'] = "static"
+
 
 db.init_app(app)
 
