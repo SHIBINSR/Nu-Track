@@ -36,7 +36,7 @@ class Vendor(db.Model):
             "updated_at":self.updated_at
         }
         
-    def dorpdown(self):
+    def dropdown(self):
         return{
             "id":self.id,
             "vendor":self.vendor_name

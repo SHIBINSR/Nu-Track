@@ -211,3 +211,25 @@ def get_by_id(id):
             "data":"",
             "error":str(e)
         }),500
+    
+@vendor.route("/drop-down",methods=["GET"])
+def dropdown():
+    try:
+        all_data=[]
+        data=Vendor.query.all()
+        for i in data:
+            temp=Vendor.dropdown(i)
+            all_data.append(temp)
+        return jsonify({
+            "data":all_data,
+            "error":"",
+            "status":True,
+            "msg":""
+        }),201
+    except Exception as e:
+        return jsonify({
+            "message":"",
+            "status":False,
+            "data":"",
+            "error":str(e)
+        }),500
