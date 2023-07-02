@@ -21,8 +21,8 @@ def create_clients():
         address=data.get("address")
         website=data.get("website")
         email=data.get("email")
-        phone=data.get("phone")
-        contact_person=data.get("contact_person")
+        phone=data.get("phone") if data.get("phone") else None
+        contact_person=data.get("contact_person") if data.get("contact_person") else None
         designation=data.get("designation")
 
         post=Client(company_name=company_name,
@@ -115,7 +115,11 @@ def edit_data(id):
         website=data.get("website")
         email=data.get("email")
         phone=data.get("phone")
+        if phone== None or phone=="":
+            phone=None
         contact_person=data.get("contact_person")
+        if contact_person==None or contact_person=="":
+            contact_person=None
         designation=data.get("designation")
 
         client_id=Client.query.get(id)
@@ -198,6 +202,28 @@ def get_by_id(id):
             "staus":True,
             "data":demo,
             "error":""
+        }),201
+    except Exception as e:
+        return jsonify({
+            "message":"",
+            "status":False,
+            "data":"",
+            "error":str(e)
+        }),500
+    
+@client.route("/drop-down",methods=["GET"])
+def drop_down():
+    try:
+        all_data=[]
+        data=Client.query.all()
+        for i in data:
+            temp=Client.dropdown(i)
+            all_data.append(temp)
+        return jsonify({
+            "data":all_data,
+            "error":"",
+            "status":True,
+            "msg":""
         }),201
     except Exception as e:
         return jsonify({

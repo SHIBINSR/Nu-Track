@@ -10,14 +10,13 @@ def add_services_form():
         data=request.get_json()
         subscriber_type=data.get("subscriber_type")
         client_name=data.get("client_name")
-        subscribed_service=data.get("subscribed_service")
+        subscribed_service=data.get("subscribed_service") if data.get("subscribed_service") else None
         plan=data.get("plan")
-        plan_amount=data.get("plan_amount")
+        plan_amount=data.get("plan_amount") if data.get("plan_amount") else None
         vendor=data.get("vendor")
-        subscribed_on=data.get("subscribed_on")
-        next_renewal_date=data.get("next_renewal_date")
-        remind_on=data.get("remind_on")
-        service_status=data.get("service_status")
+        next_renewal_date=data.get("next_renewal_date") if data.get("next_renewal_date") else None   
+        remind_on=data.get("remind_on")if data.get("remind_on") else None
+        service_status=data.get("service_status") if data.get("service_status") else None
         plan_details=data.get('plan_details')
         comments=data.get("comments")
 
@@ -27,7 +26,6 @@ def add_services_form():
                       plan=plan,
                       plan_amount=plan_amount,
                       vendor=vendor,
-                      subscribed_on=subscribed_on,
                       next_renewal_date=next_renewal_date,
                       remind_on=remind_on,
                       service_status=service_status,
@@ -115,11 +113,10 @@ def edit_data(id):
                 "vendor":data.get("vendor"),
                 "subscribed_on":data.get("subscribed_on"),
                 "next_renewal_date":data.get("next_renewal_date"),
-                "remind_on":data.get("remind_on"),
+                "remind_on":data.get("remind_on") ,
                 "service_status":data.get("service_status"),
                 "plan_details":data.get('plan_details'),
                 "comments":data.get("comments")}
-
         service_id=Services.query.get(id)
         if service_id is None:
             return jsonify({
@@ -209,6 +206,27 @@ def get_by_id(id):
             "error":str(e)
         }),500
 
+@services.route("/drop-down",methods=["GET"])
+def drop_down():
+    try:
+        all_data=[]
+        data=Services.query.all()
+        for i in data:
+            temp=Services.dropdown(i)
+            all_data.append(temp)
+        return jsonify({
+            "data":all_data,
+            "error":"",
+            "status":True,
+            "msg":""
+        }),201
+    except Exception as e:
+        return jsonify({
+            "message":"",
+            "status":False,
+            "data":"",
+            "error":str(e)
+        }),500
 
 
 

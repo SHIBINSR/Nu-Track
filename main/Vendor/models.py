@@ -3,23 +3,23 @@ import json
 
 class Vendor(db.Model):
     id=db.Column(db.BigInteger(),primary_key=True)
-    vendor_name=db.Column(db.String(100),nullable=False)
-    address=db.Column(db.String(100),nullable=False)
-    website=db.Column(db.String(100),nullable=False)
-    email=db.Column(db.String(100),nullable=False)
-    phone=db.Column(db.BigInteger(),nullable=False)
-    logo=db.Column(db.String(255),nullable=False)
-    contact_person=db.Column(db.BigInteger(),nullable=False)
-    designation=db.Column(db.String(100),nullable=False)
-    created_by = db.Column(db.Integer, nullable=True)
-    updated_by = db.Column(db.Integer, nullable=True)
+    vendor_name=db.Column(db.String(100))
+    address=db.Column(db.String(100))
+    website=db.Column(db.String(100))
+    email=db.Column(db.String(100))
+    phone=db.Column(db.BigInteger())
+    logo=db.Column(db.String(255))
+    contact_person=db.Column(db.BigInteger())
+    designation=db.Column(db.String(100))
+    created_by = db.Column(db.Integer)
+    updated_by = db.Column(db.Integer)
     created_at = db.Column(db.DateTime(timezone=True), server_default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=db.func.now(), onupdate=db.func.now())
     
     def __repr__(self):
         return f"<Vendor:{self.id}>"
     
-    def to_json(self):
+    def to_json(self): 
         return{
             "id":self.id,
             "vendor_name":self.vendor_name,
@@ -36,5 +36,10 @@ class Vendor(db.Model):
             "updated_at":self.updated_at
         }
         
+    def dorpdown(self):
+        return{
+            "id":self.id,
+            "vendor":self.vendor_name
+        }
         
     

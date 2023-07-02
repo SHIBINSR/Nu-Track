@@ -43,18 +43,19 @@ def show_all_plans():
         data=Plans.query.paginate(page=int(page),per_page=int(per_page),error_out=False)
         all_data=[]
         for i in data:
-            id=i.id
-            domain_name=i.domain_name
-            website=i.website
-            hosting=i.hosting
-            software=i.software
-            temp={
-                "id":id,
-                "domain_name":domain_name,
-                "website":website,
-                "hosting":hosting,
-                "software":software
-            }
+            temp=Plans.to_json(i)
+            # id=i.id
+            # domain_name=i.domain_name
+            # website=i.website
+            # hosting=i.hosting
+            # software=i.software
+            # temp={
+            #     "id":id,
+            #     "domain_name":domain_name,
+            #     "website":website,
+            #     "hosting":hosting,
+            #     "software":software
+            # }
             all_data.append(temp)
         return jsonify({
             "msg":"",
@@ -147,6 +148,28 @@ def show_by_id(id):
             "data":demo,
             "status":True,
             "error":""
+        }),201
+    except Exception as e:
+        return jsonify({
+            "message":"",
+            "status":False,
+            "data":"",
+            "error":str(e)
+        }),500
+
+@plans.route("/drop-down",methods=["GET"])
+def drop_down():
+    try:
+        all_data=[]
+        data=Plans.query.all()
+        for i in data:
+            temp=Plans.dropdown(i)
+            all_data.append(temp)
+        return jsonify({
+            "data":all_data,
+            "error":"",
+            "status":True,
+            "msg":""
         }),201
     except Exception as e:
         return jsonify({

@@ -20,12 +20,11 @@ def create_vendor():
         address=data.get("address")
         website=data.get("website")
         email=data.get("email")
-        phone=data.get("phone")
+        phone=data.get("phone") if data.get("phone") else None
         logo=attachment
-        contact_person=data.get("contact_person")
+        contact_person=data.get("contact_person") if data.get("contact_person") else None
         designation=data.get("designation")
          
-        
         post=Vendor(vendor_name=vendor_name,
                     address=address,
                     website=website,
@@ -117,7 +116,11 @@ def edit_data(id):
         website=data.get("website")
         email=data.get("email")
         phone=data.get("phone")
+        if phone==None or phone=="":
+            phone=None
         contact_person=data.get("contact_person")
+        if contact_person==None or contact_person=="":
+            contact_person=None
         designation=data.get("designation")
 
         vendor_id=Vendor.query.get(id)
